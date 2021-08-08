@@ -36,7 +36,11 @@ const Userschema = mongoose.Schema({
 
         required: function() {
             return this.is_subcribed; 
-        }
+        }, 
+
+        // for type Number mongoose also have the following built-in validators 
+        min: 12,
+        max: 16,
     }, 
 
 }); 
