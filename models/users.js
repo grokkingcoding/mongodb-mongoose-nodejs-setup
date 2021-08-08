@@ -4,17 +4,36 @@ const moment = require('moment');
 // declare schema 
 
 const Userschema = mongoose.Schema({
-    username: { type: String, required: true },
+    username: { 
+        type: String, 
+        required: true, 
+        // for type Stirng mongoose also have the following built-in validators 
+        minlength: 6, 
+        maxlength: 255,
+        match: /pattern/ 
+    },
     password: String,
     fullname: String,
     created_at: Date,
     token: String,    
     is_subcribed: Boolean,  
 
+    // momgoose also provide enum for validation 
+    subscription_type: {
+        type: String, 
+        required: true,
+        enum: ['monthly', 'yearly']
+    }, 
+
     // credit card number is only required if is_subscribed = true
-    
     credit_card_number: {
         type: Number,         
+
+        // DO NOT replace function() with () => 
+        // basically do not replace function() with an arrow function since arrow functions do not have their own (this)
+        // if you use this inside an arrow function it refers to mongoose's enclosing execution context
+        // but what we want is for this.is_subcribed to refer to is_subcribed: Boolean in our mongoose schema 
+
         required: function() {
             return this.is_subcribed; 
         }

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,8 @@
     "lodash.isempty": "^4.4.0",
     "moment": "^2.29.1",
     "mongoose": "^5.13.5",
-    "winston": "^3.3.3"
+    "nodemon": "^2.0.12",
+    "winston": "^3.3.3",
+    "winston-mongodb": "^5.0.7"
   }
 }
